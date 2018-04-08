@@ -1,24 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TransPort" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q1U-XO-s0l"/>
+                        <viewControllerLayoutGuide type="bottom" id="6q9-9a-uNy"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="3hP-8A-gip">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pass-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ZpH-Ir-Z8l">
+                                <rect key="frame" x="67" y="20" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="kwA-ck-fbh"/>
+                                    <constraint firstAttribute="height" constant="240" id="znU-vC-MbE"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfk-FC-Fl4">
+                                <rect key="frame" x="171" y="342" width="32" height="30"/>
+                                <state key="normal" title="save"/>
+                                <connections>
+                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="guP-nC-jxf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYg-jr-RI0">
+                                <rect key="frame" x="172" y="396" width="30" height="30"/>
+                                <state key="normal" title="load"/>
+                                <connections>
+                                    <action selector="load:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CGg-bM-r9i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLi-w1-7zl">
+                                <rect key="frame" x="162" y="293" width="51" height="30"/>
+                                <state key="normal" title="camera"/>
+                                <connections>
+                                    <action selector="camera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cQt-Tw-xW1"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="hYg-jr-RI0" firstAttribute="top" secondItem="mfk-FC-Fl4" secondAttribute="bottom" constant="24" id="0d6-0S-bcR"/>
+                            <constraint firstItem="ZpH-Ir-Z8l" firstAttribute="top" secondItem="Q1U-XO-s0l" secondAttribute="bottom" id="5Ma-WW-M1q"/>
+                            <constraint firstItem="mfk-FC-Fl4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BBs-T3-LJr"/>
+                            <constraint firstItem="OLi-w1-7zl" firstAttribute="top" secondItem="ZpH-Ir-Z8l" secondAttribute="bottom" constant="33" id="Bg7-8I-mU7"/>
+                            <constraint firstItem="3hP-8A-gip" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FLw-66-SdW"/>
+                            <constraint firstItem="3hP-8A-gip" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HEF-mS-FNv"/>
+                            <constraint firstItem="OLi-w1-7zl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ilJ-Y9-jm7"/>
+                            <constraint firstItem="ZpH-Ir-Z8l" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lEm-q5-E59"/>
+                            <constraint firstItem="3hP-8A-gip" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="o0C-CS-618"/>
+                            <constraint firstItem="mfk-FC-Fl4" firstAttribute="top" secondItem="OLi-w1-7zl" secondAttribute="bottom" constant="19" id="sY3-h4-f91"/>
+                            <constraint firstItem="3hP-8A-gip" firstAttribute="bottom" secondItem="6q9-9a-uNy" secondAttribute="top" id="wQo-Cl-UYY"/>
+                            <constraint firstItem="hYg-jr-RI0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="z7v-Se-HuX"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="ZpH-Ir-Z8l" id="3Ld-UC-KYx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="131.78410794602701"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="540" height="960"/>
+        <image name="pass-placeholder" width="1000" height="1000"/>
+    </resources>
 </document>
