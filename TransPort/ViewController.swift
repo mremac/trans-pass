@@ -8,7 +8,30 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return(2)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cameraButton")
+        switch(indexPath.row) {
+        case 0:
+            cell = tableView.dequeueReusableCell(withIdentifier: "cameraButton")
+            break
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: "govText")
+            break
+        default:
+            cell = tableView.dequeueReusableCell(withIdentifier: "cameraButton")
+            break
+        }
+        
+        print("hello")
+        
+        return cell!
+    }
+    
     
     @IBOutlet weak var imageView: UIImageView!
     var imagePickerController : UIImagePickerController!
@@ -21,16 +44,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UIPopove
     }
     
     @IBAction func save(_ sender: Any) {
-        saveImage(imageName:"whatever")
+        saveImage(imageName:"111")
     }
     
     @IBAction func load(_ sender: Any) {
-        getImage(imageName:"whatever")
+        getImage(imageName:"111")
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getImage(imageName:"111")
         
     }
     
@@ -53,14 +77,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UIPopove
     
     func saveImage(imageName: String){
         //create an instance of the FileManager
-        _ = FileManager.default
+        let fileManager = FileManager.default
         //get the image path
-        _ = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+        print(imagePath)
         //get the image we took with camera
         let image = imageView.image!
         //get the PNG data for this image
-        _ = UIImagePNGRepresentation(image)
-        //store it in the document directory    fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
+        let data = UIImagePNGRepresentation(image)
+        //store it in the document directory
+        fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
         
     }
     
@@ -68,7 +94,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UIPopove
         
         let tempImage:UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.image = tempImage
-        print("hello")
+        
+        saveImage(imageName:"111")
         
         self.dismiss(animated:true, completion: nil)
     }
