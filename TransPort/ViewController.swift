@@ -10,35 +10,40 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return(10)
+        return(8)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var floatHeight = 50.0
+        switch(indexPath.row) {
+        case 0:
+            break
+        case 1:
+            floatHeight = 540.0
+            break
+        case 2:
+            floatHeight = 420.0
+            break
+        default:
+            break
+        }
+        return(CGFloat(floatHeight))
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cameraButton")
+        var cell = tableView.dequeueReusableCell(withIdentifier: "blankCell")
         switch(indexPath.row) {
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: "cameraButton")
+            cell = tableView.dequeueReusableCell(withIdentifier: "titleCell")
             break
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: "govText")
             break
         case 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: "paragraphText1")
+            cell = tableView.dequeueReusableCell(withIdentifier: "equActText")
             break
         case 3:
-            cell = tableView.dequeueReusableCell(withIdentifier: "paragraphText2")
-            break
-        case 4:
-            cell = tableView.dequeueReusableCell(withIdentifier: "paragraphText3")
-            break
-        case 5:
-            cell = tableView.dequeueReusableCell(withIdentifier: "paragraphText4")
-            break
-        case 6:
-            cell = tableView.dequeueReusableCell(withIdentifier: "paragraphText5")
-            break
-        case 7:
-            cell = tableView.dequeueReusableCell(withIdentifier: "paragraphText6")
+            cell = tableView.dequeueReusableCell(withIdentifier: "moreInfoText")
             break
         default:
             cell = tableView.dequeueReusableCell(withIdentifier: "blankCell")
@@ -55,6 +60,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UIPopove
     var imagePickerController : UIImagePickerController!
     
     @IBAction func camera(_ sender: Any) {
+        print("hello")
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = .camera
